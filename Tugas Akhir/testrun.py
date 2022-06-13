@@ -288,14 +288,14 @@ def menu(death_count):
             SCREEN.blit(score, scoreRect)
 
             highscore_txt = open("highscore.txt", "r+")
-            highscore_read = highscore_txt.readline()
 
             try:
                 points > int(highscore_read)
             except ValueError:
+                highscore_file = open("highscore.txt", "r+")
                 highscore_txt.truncate(0)
-                highscore_txt.write(str(points))
-                highscore_txt.close() 
+                highscore_file.write(str(points))
+                highscore_file.close() 
             else:
                 if points > int(highscore_read):
                     highscore_txt.truncate(0)
