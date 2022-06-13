@@ -27,8 +27,7 @@ STANDING = pygame.image.load(os.path.join("Assets/Avatar", "idle.png"))
 
 SMALL_OBSTACLE = [
     pygame.image.load(os.path.join("Assets/Obstacle", "Small1.png")),
-    pygame.image.load(os.path.join("Assets/Obstacle", "Small2.png")),
-    pygame.image.load(os.path.join("Assets/Obstacle", "SmallCactus3.png"))]
+    pygame.image.load(os.path.join("Assets/Obstacle", "Small2.png"))]
 
 LARGE_OBSTACLE = [    
     pygame.image.load(os.path.join("Assets/Obstacle", "Large1.png")),
@@ -289,14 +288,14 @@ def menu(death_count):
             SCREEN.blit(score, scoreRect)
 
             highscore_txt = open("highscore.txt", "r+")
+            highscore_read = highscore_txt.readline()
 
             try:
                 points > int(highscore_read)
             except ValueError:
-                highscore_file = open("highscore.txt", "r+")
                 highscore_txt.truncate(0)
-                highscore_file.write(str(points))
-                highscore_file.close() 
+                highscore_txt.write(str(points))
+                highscore_txt.close() 
             else:
                 if points > int(highscore_read):
                     highscore_txt.truncate(0)
